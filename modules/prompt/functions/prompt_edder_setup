@@ -1,0 +1,70 @@
+function prompt_edder_precmd {
+  git-info
+}
+function ssh_connection() {
+    if $SHOW_HOST ; then
+        HOSTER="%{%F{yellow}%}%m "
+    else
+        HOSTER=""
+    fi
+    if [[ -n $SSH_CONNECTION ]]; then
+        echo "%{%F{cyan}%}☁  $HOSTER"
+    fi
+}
+
+function show_user() {
+    local user=`whoami`
+    if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="cyan"; fi
+
+    if [[ "$user" != "$DEFAULT_USER" ]]; then
+        echo " %{%F{$NCOLOR}%}%n%{%F{white}%}"
+    fi
+}
+
+function prompt_edder_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent subst)
+
+  # Load required functions.
+  autoload -Uz add-zsh-hook
+
+  # Add hook for calling git-info before each command.
+  add-zsh-hook precmd prompt_edder_precmd
+
+  # Set git-info parameters.
+  zstyle ':prezto:module:git:info' verbose 'yes'
+  zstyle ':prezto:module:git:info:action' format ':%%B%F{yellow}%s%f%%b'
+  #zstyle ':prezto:module:git:info:added' format ' %%B%F{green}✚%f%%b'
+  zstyle ':prezto:module:git:info:dirty' format ' %F{red}✗%f'
+  zstyle ':prezto:module:git:info:ahead' format ' %%B%F{blue}↑%f%%b'
+  zstyle ':prezto:module:git:info:behind' format ' %%B%F{blue}↓%f%%b'
+  zstyle ':prezto:module:git:info:branch' format '%F{black}%b%f'
+  zstyle ':prezto:module:git:info:commit' format ':%F{green}%.7c%f'
+  zstyle ':prezto:module:git:info:deleted' format ' %%B%F{red}✖%f%%b'
+  #zstyle ':prezto:module:git:info:modified' format ' %%B%F{blue}✱%f%%b'
+  zstyle ':prezto:module:git:info:position' format '%F{red}%p%f'
+  #zstyle ':prezto:module:git:info:renamed' format ' %%B%F{magenta}➜%f%%b'
+  #zstyle ':prezto:module:git:info:stashed' format ' %%B%F{cyan}✭%f%%b'
+  #zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{yellow}═%f%%b'
+  #zstyle ':prezto:module:git:info:untracked' format ' %%B%F{white}◼%f%%b'
+  zstyle ':prezto:module:git:info:keys' format \
+    'prompt' ' %F{black}(%f$(coalesce "%b" "%p" "%c")${git_info[rprompt]}%F{black})%f' \
+    'rprompt' '%A%B%S%a%d%m%r%U%u%D'
+
+  ## old
+  # zstyle ':prezto:module:git:info:branch' format '%F{black}%b%f'
+  # zstyle ':prezto:module:git:info:clean' format ' %F{green}✔%f'
+  # zstyle ':prezto:module:git:info:dirty' format ' %F{red}✗%f'
+  # zstyle ':prezto:module:git:info:ahead' format ' %%B%F{blue}↑%f%%b'
+  # zstyle ':prezto:module:git:info:behind' format ' %%B%F{blue}↓%f%%b'
+  # zstyle ':prezto:module:git:info:keys' format \
+  #   'prompt' ' %F{black}(%f$(coalesce "%b" "%p" "%c")${git_info[rprompt]}%F{black})%f' \
+  #   'rprompt' '%A%B%S%a%d%m%r%U%u'
+
+  # Define prompts.
+  PROMPT='$(ssh_connection)%(?.%F{green}${1:-➜ }%f.%F{red}${1:-➜ }%f)$(show_user)%{%F{green}%}%p %{%F{blue}%}%c%{%F{blue}%}%{%F{blue}%}${(e)git_info[prompt]} %f'
+  RPROMPT=''
+}
+
+prompt_edder_setup "$@"
