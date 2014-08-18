@@ -13,10 +13,17 @@ fi
 export SUBLIME=subl
 export EDITOR="$SUBLIME --wait"
 export VISUAL=$EDITOR
-export DEFAULT_USER="edder"
 # export LSCOLORS="exfxcxdxbxegedabagacad"
 
 # Customize to your needs...
 if [[ -s "$HOME/.aliases" ]]; then
   source "$HOME/.aliases"
+fi
+
+if [[ -s "$HOME/.aliases" ]]; then
+  source "$HOME/.aliases"
+fi
+
+if [[ -s "$HOME/.vagrantrc" ]]; then
+  source "$HOME/.vagrantrc"
 fi
