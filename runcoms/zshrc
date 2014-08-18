@@ -20,8 +20,8 @@ if [[ -s "$HOME/.aliases" ]]; then
   source "$HOME/.aliases"
 fi
 
-if [[ -s "$HOME/.aliases" ]]; then
-  source "$HOME/.aliases"
+if [[ -s "$HOME/.osxrc" ]]; then
+  source "$HOME/.osxrc"
 fi
 
 if [[ -s "$HOME/.vagrantrc" ]]; then
