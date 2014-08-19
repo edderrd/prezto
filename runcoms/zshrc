@@ -15,7 +15,22 @@ fi
 #export VISUAL=$EDITOR
 # export LSCOLORS="exfxcxdxbxegedabagacad"
 
-# Customize to your needs...
+###### extensions ######
+
+# why would you type 'cd dir' if you could just type 'dir'?
+setopt AUTO_CD
+ 
+# Now we can pipe to multiple outputs!
+setopt MULTIOS
+ 
+# This makes cd=pushd
+#setopt AUTO_PUSHD
+ 
+# This will use named dirs when possible
+setopt AUTO_NAME_DIRS
+
+##### Customize to your needs... ####
+
 if [[ -s "$HOME/.aliases" ]]; then
   source "$HOME/.aliases"
 fi
