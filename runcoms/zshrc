@@ -29,6 +29,55 @@ setopt MULTIOS
 # This will use named dirs when possible
 setopt AUTO_NAME_DIRS
 
+# Push and pop directories on directory stack
+alias pu='pushd'
+alias po='popd'
+
+# Basic directory operations
+alias ...='cd ../..'
+alias -- -='cd -'
+
+# Super user
+alias _='sudo'
+alias please='sudo'
+
+# List direcory contents
+alias lsa='ls -lah'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -lAh'
+alias sl=ls # often screw this up
+
+# better cd
+alias ..='cd ..'
+alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
+alias cd/='cd /'
+
+cd () {
+  if   [[ "x$*" == "x..." ]]; then
+    cd ../..
+  elif [[ "x$*" == "x...." ]]; then
+    cd ../../..
+  elif [[ "x$*" == "x....." ]]; then
+    cd ../../../..
+  elif [[ "x$*" == "x......" ]]; then
+    cd ../../../../..
+  elif [ -d ~/.autoenv ]; then
+    source ~/.autoenv/activate.sh
+    autoenv_cd "$@"
+  else
+    builtin cd "$@"
+  fi
+}
+
+# directory operations shortcuts
+alias md='mkdir -p'
+alias rd=rmdir
+alias d='dirs -v | head -10'
+
 ##### Customize to your needs... ####
 
 if [[ -s "$HOME/.aliases" ]]; then
