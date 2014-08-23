@@ -228,4 +228,5 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 # before deleting or overwriting files. Set to 'no' to disable this safer
 # behavior.
 # zstyle ':prezto:module:utility' safe-ops 'yes'
-zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+# Auto start a session when Zsh is launched in a SSH connection.
+zstyle ':prezto:module:tmux:auto-start' remote 'false'
