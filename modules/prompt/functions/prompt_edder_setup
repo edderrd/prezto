@@ -3,7 +3,7 @@ function prompt_edder_precmd {
 }
 function ssh_connection() {
     if $SHOW_HOST ; then
-        HOSTER="%{%F{yellow}%}%m "
+        HOSTER="%{%F{yellow}%}%M "
     else
         HOSTER=""
     fi
