@@ -37,14 +37,13 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
-  'completion' \
-  'history-substring-search' \
   'git' \
   'homebrew' \
   'ssh' \
   'tmux' \
   'syntax-highlighting' \
   'history-substring-search' \
+  'completion' \
   'prompt'
 
 
@@ -230,3 +229,7 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 # zstyle ':prezto:module:utility' safe-ops 'yes'
 # Auto start a session when Zsh is launched in a SSH connection.
 zstyle ':prezto:module:tmux:auto-start' remote 'false'
+# zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+
+# Integrate with iTerm2.
+zstyle ':prezto:module:tmux:iterm' integrate 'yes'
