@@ -39,6 +39,8 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'git' \
   'homebrew' \
+  'node' \
+  'osx' \
   'ssh' \
   'tmux' \
   'syntax-highlighting' \
