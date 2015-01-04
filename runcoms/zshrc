@@ -29,6 +29,18 @@ setopt MULTIOS
 # This will use named dirs when possible
 setopt AUTO_NAME_DIRS
 
+# Keep echo "station" > station from clobbering station
+setopt CLOBBER
+ 
+# Case insensitive globbing
+setopt NO_CASE_GLOB
+
+# Be Reasonable!
+setopt NUMERIC_GLOB_SORT
+
+# see $ man zshoptions
+setopt EXTENDED_GLOB
+
 # Push and pop directories on directory stack
 alias pu='pushd'
 alias po='popd'
