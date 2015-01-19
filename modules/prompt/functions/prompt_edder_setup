@@ -63,7 +63,7 @@ function prompt_edder_setup {
   #   'rprompt' '%A%B%S%a%d%m%r%U%u'
 
   # Define prompts.
-  PROMPT='$(ssh_connection)%(?.%F{green}${1:-➜ }%f.%F{red}${1:-➜ }%f)$(show_user)%{%F{green}%}%p %{%F{blue}%}%c%{%F{blue}%}%{%F{blue}%}${(e)git_info[prompt]} %f'
+  PROMPT='$(ssh_connection)%(?.%F{green}${1:-➜ }%f.%F{red}${1:-➜ }%f)$(show_user)%{%F{green}%}%p %{%F{blue}%}%1/%{%F{blue}%}%{%F{blue}%}${(e)git_info[prompt]} %f'
   RPROMPT=''
 }
 
