@@ -27,7 +27,7 @@ setopt MULTIOS
 #setopt AUTO_PUSHD
  
 # This will use named dirs when possible
-setopt AUTO_NAME_DIRS
+setopt NO_AUTO_NAME_DIRS
 
 # Keep echo "station" > station from clobbering station
 setopt CLOBBER
