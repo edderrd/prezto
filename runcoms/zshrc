@@ -4,6 +4,7 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
+export TERM="xterm-256color"
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -13,25 +14,25 @@ fi
 #export SUBLIME=subl
 #export EDITOR="$SUBLIME --wait"
 #export VISUAL=$EDITOR
-# export LSCOLORS="exfxcxdxbxegedabagacad"
+export LSCOLORS="exfxcxdxbxegedabagacad"
 
 ###### extensions ######
 
 # why would you type 'cd dir' if you could just type 'dir'?
 setopt AUTO_CD
- 
+
 # Now we can pipe to multiple outputs!
 setopt MULTIOS
- 
+
 # This makes cd=pushd
-#setopt AUTO_PUSHD
- 
+setopt AUTO_PUSHD
+
 # This will use named dirs when possible
 setopt NO_AUTO_NAME_DIRS
 
 # Keep echo "station" > station from clobbering station
 setopt CLOBBER
- 
+
 # Case insensitive globbing
 setopt NO_CASE_GLOB
 

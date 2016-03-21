@@ -21,6 +21,28 @@ function show_user() {
     fi
 }
 
+todo_count(){
+  if $(which /usr/local/bin/todo.sh &> /dev/null) # do nothing since there's not files
+  then
+
+    projects=$(echo $(cat .project.todo 2&> /dev/null | xargs))
+    num=$(echo $(/usr/local/bin/todo.sh -d $HOME/Dropbox/Configs/todo/todo.cfg ls $1 $projects | grep -o "TODO: [0-9]." | sed 's/TODO: //g'))
+    let todos=num
+    if [ $todos != 0 ]
+    then
+      if [[ -n $projects ]]; then
+        echo "$projects: $todos"
+      else
+        echo "+todo: $todos"
+      fi
+    else
+      echo ""
+    fi
+  else
+    echo ""
+  fi
+}
+
 function prompt_edder_setup {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
@@ -45,7 +67,7 @@ function prompt_edder_setup {
   #zstyle ':prezto:module:git:info:modified' format ' %%B%F{blue}✱%f%%b'
   zstyle ':prezto:module:git:info:position' format '%F{red}%p%f'
   #zstyle ':prezto:module:git:info:renamed' format ' %%B%F{magenta}➜%f%%b'
-  #zstyle ':prezto:module:git:info:stashed' format ' %%B%F{cyan}✭%f%%b'
+  # zstyle ':prezto:module:git:info:stashed' format ' %%B%F{cyan}✭%f%%b'
   #zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{yellow}═%f%%b'
   #zstyle ':prezto:module:git:info:untracked' format ' %%B%F{white}◼%f%%b'
   zstyle ':prezto:module:git:info:keys' format \
@@ -64,7 +86,7 @@ function prompt_edder_setup {
 
   # Define prompts.
   PROMPT='$(ssh_connection)%(?.%F{green}${1:-➜ }%f.%F{red}${1:-➜ }%f)$(show_user)%{%F{green}%}%p %{%F{blue}%}%.%{%F{blue}%}%{%F{blue}%}${(e)git_info[prompt]} %f'
-  RPROMPT=''
+  RPROMPT='%F{blue}$(todo_count)%f'
 }
 
 prompt_edder_setup "$@"

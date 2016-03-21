@@ -22,10 +22,10 @@ zstyle ':prezto:*:*' color 'yes'
 # zstyle ':prezto:load' pmodule-allow-overrides 'yes'
 
 # Set the Zsh modules to load (man zshmodules).
-# zstyle ':prezto:load' zmodule 'attr' 'stat'
+#zstyle ':prezto:load' zmodule 'attr' 'stat'
 
 # Set the Zsh functions to load (man zshcontrib).
-# zstyle ':prezto:load' zfunction 'zargs' 'zmv'
+#zstyle ':prezto:load' zfunction 'zargs' 'zmv'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
@@ -43,6 +43,7 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'ssh' \
   'tmux' \
+  'fasd' \
   'syntax-highlighting' \
   'history-substring-search' \
   'completion' \
@@ -126,6 +127,7 @@ zstyle ':prezto:load' pmodule \
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
+#zstyle ':prezto:module:prompt' theme 'powerlevel9k'
 zstyle ':prezto:module:prompt' theme 'edder'
 zstyle ':prezto:module:prompt' theme 'agnosteredder'
 
@@ -204,10 +206,10 @@ zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_rsa2' 'id_github'
 zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # Set the window title format.
-# zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
 
 # Set the tab title format.
-# zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
+zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 
 # Set the terminal multiplexer title format.
 # zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
