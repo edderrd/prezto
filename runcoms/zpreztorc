@@ -35,15 +35,11 @@ zstyle ':prezto:load' pmodule \
   'editor' \
   'history' \
   'directory' \
-  'spectrum' \
   'utility' \
   'git' \
-  'homebrew' \
-  'node' \
   'osx' \
   'ssh' \
   'tmux' \
-  'fasd' \
   'syntax-highlighting' \
   'history-substring-search' \
   'completion' \
