@@ -91,18 +91,21 @@ alias md='mkdir -p'
 alias rd=rmdir
 alias d='dirs -v | head -10'
 
+lazy_source () {
+    eval "$1 () { [ -f $2 ] && source $2 && $1 \$@ }"
+}
+
 ##### Customize to your needs... ####
 
 if [[ -s "$HOME/.aliases" ]]; then
-  source "$HOME/.aliases"
+  . "$HOME/.aliases"
 fi
 
 if [[ -s "$HOME/.osxrc" ]]; then
-  source "$HOME/.osxrc"
+  . "$HOME/.osxrc"
 fi
 
 if [[ -s "$HOME/.vagrantrc" ]]; then
-  source "$HOME/.vagrantrc"
+  . "$HOME/.vagrantrc"
 fi
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
