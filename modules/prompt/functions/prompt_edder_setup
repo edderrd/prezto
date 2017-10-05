@@ -66,7 +66,7 @@ function prompt_edder_setup {
   zstyle ':prezto:module:git:info:dirty' format ' %F{red}✗%f'
   zstyle ':prezto:module:git:info:ahead' format ' %%B%F{blue}↑%f%%b'
   zstyle ':prezto:module:git:info:behind' format ' %%B%F{blue}↓%f%%b'
-  zstyle ':prezto:module:git:info:branch' format '%F{black}%b%f'
+  zstyle ':prezto:module:git:info:branch' format '%F{cyan}%b%f'
   zstyle ':prezto:module:git:info:commit' format ':%F{green}%.7c%f'
   #zstyle ':prezto:module:git:info:deleted' format ' %%B%F{red}✖%f%%b'
   #zstyle ':prezto:module:git:info:modified' format ' %%B%F{blue}✱%f%%b'
@@ -76,7 +76,7 @@ function prompt_edder_setup {
   #zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{yellow}═%f%%b'
   #zstyle ':prezto:module:git:info:untracked' format ' %%B%F{white}◼%f%%b'
   zstyle ':prezto:module:git:info:keys' format \
-    'prompt' ' %F{black}(%f$(coalesce "%b" "%p" "%c")${git_info[rprompt]}%F{black})%f' \
+    'prompt' ' %F{cyan}(%f$(coalesce "%b" "%p" "%c")${git_info[rprompt]}%F{cyan})%f' \
     'rprompt' '%A%B%S%a%d%m%r%U%u%D'
 
   # Define prompts.
