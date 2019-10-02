@@ -3,3 +3,4 @@
 modules/*/cache.zsh
 contrib
 .DS_Store
+modules/autosuggestions/external
