@@ -126,7 +126,7 @@ zstyle ':prezto:module:autosuggestions:color' found 'fg=240'
 # Auto set to 'off' on dumb terminals.
 #zstyle ':prezto:module:prompt' theme 'edder'
 #zstyle ':prezto:module:prompt' theme 'agnoster'
-zstyle ':prezto:module:prompt' theme 'agnosteredder'
+zstyle ':prezto:module:prompt' theme 'agnoster_edder'
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)
