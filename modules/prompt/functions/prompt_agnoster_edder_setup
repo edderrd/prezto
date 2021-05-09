@@ -28,10 +28,26 @@ typeset -aHg AGNOSTER_PROMPT_SEGMENTS=(
     prompt_status
     prompt_context
     prompt_virtualenv
+    prompt_vi_mode
     prompt_dir
     prompt_git
     prompt_end
 )
+
+# Updates editor information when the keymap changes.
+# https://gist.github.com/steakknife/2051560
+zle-keymap-select() {
+  zle reset-prompt
+  zle -R
+}
+zle -N zle-keymap-select
+
+# Vi mode
+VICMD_INDICATOR="NORMAL"
+VIINS_INDICATOR="INSERT"
+
+# enable vi mode
+bindkey -v
 
 ### Segment drawing
 # A few utility functions to make it easy and re-usable to draw segmented prompts
@@ -52,6 +68,8 @@ GEAR="\u2699"
 ARROW_DOWN="\uf544"
 ARROW_UP="\uf55c"
 DETACHED="\uf839"
+INSERT_MODE="\uf120"
+NORMAL_MODE="\uf794"
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
@@ -80,6 +98,33 @@ prompt_end() {
   CURRENT_BG=''
 }
 
+# Vi mode
+prompt_vi_mode() {
+  local color mode
+  is_normal() {
+    test -n "${${KEYMAP/vicmd/$VICMD_INDICATOR}/(main|viins)/}"  # param expans
+  }
+  if is_normal; then
+    color=green
+    #mode=" $VICMD_INDICATOR"
+    mode=" $NORMAL_MODE "
+  else
+    color=magenta
+    #mode=" $VIINS_INDICATOR"
+    mode=" $INSERT_MODE "
+  fi
+  prompt_segment $color $PRIMARY_FG $mode
+}
+
+# Timestamp
+prompt_timestamp() {
+  if [[ $ZSH_TIME = "24" ]]; then
+    local time_string="%H:%M:%S"
+  else
+    local time_string="%L:%M:%S %p"
+  fi
+  prompt_segment cyan $PRIMARY_FG "%D{$time_string}"
+}
 ### Prompt components
 # Each component will draw itself, and hide itself if no information needs to be shown
 
