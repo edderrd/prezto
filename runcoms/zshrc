@@ -75,11 +75,6 @@ alias md='mkdir -p'
 alias rd=rmdir
 alias d='dirs -v | head -10'
 
-lazy_source () {
-    eval "$1 () { [ -f $2 ] && source $2 && $1 \$@ }"
-}
-
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
