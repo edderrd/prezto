@@ -47,7 +47,9 @@ VICMD_INDICATOR="NORMAL"
 VIINS_INDICATOR="INSERT"
 
 # enable vi mode
-bindkey -v
+if [ -z $VI_MODE ]; then
+  bindkey -v
+fi
 
 ### Segment drawing
 # A few utility functions to make it easy and re-usable to draw segmented prompts
@@ -100,6 +102,10 @@ prompt_end() {
 
 # Vi mode
 prompt_vi_mode() {
+  if [[ -z $VI_MODE ]]; then
+    return;
+  fi
+
   local color mode
   is_normal() {
     test -n "${${KEYMAP/vicmd/$VICMD_INDICATOR}/(main|viins)/}"  # param expans
