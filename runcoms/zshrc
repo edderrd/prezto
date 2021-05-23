@@ -99,3 +99,6 @@ if [[ -s "$HOME/.vagrantrc" ]]; then
   . "$HOME/.vagrantrc"
 fi
 
+if [[ -s "$HOME/.linuxrc" ]]; then
+  . "$HOME/.linuxrc"
+fi
