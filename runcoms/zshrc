@@ -4,17 +4,11 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
-export TERM="xterm-256color"
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
-
-#export SUBLIME=subl
-#export EDITOR="$SUBLIME --wait"
-#export VISUAL=$EDITOR
-export LSCOLORS="exfxcxdxbxegedabagacad"
 
 ###### extensions ######
 
@@ -42,49 +36,6 @@ setopt NUMERIC_GLOB_SORT
 # see $ man zshoptions
 setopt EXTENDED_GLOB
 
-# Push and pop directories on directory stack
-alias pu='pushd'
-alias po='popd'
-
-# Basic directory operations
-alias ...='cd ../..'
-alias -- -='cd -'
-
-# Super user
-alias _='sudo'
-alias please='sudo'
-
-# List direcory contents
-alias lsa='ls -lah'
-alias l='ls -lah'
-alias ll='ls -lh'
-alias la='ls -lAh'
-alias sl=ls # often screw this up
-
-# better cd
-alias ..='cd ..'
-alias cd..='cd ..'
-alias cd...='cd ../..'
-alias cd....='cd ../../..'
-alias cd.....='cd ../../../..'
-alias cd/='cd /'
-
-
-# directory operations shortcuts
-alias md='mkdir -p'
-alias rd=rmdir
-alias d='dirs -v | head -10'
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/edder/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/edder/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/edder/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/edder/google-cloud-sdk/completion.zsh.inc'; fi
-
-
 ##### Customize to your needs... ####
 
 if [[ -s "$HOME/.aliases" ]]; then
@@ -95,10 +46,10 @@ if [[ -s "$HOME/.osxrc" ]]; then
   . "$HOME/.osxrc"
 fi
 
-if [[ -s "$HOME/.vagrantrc" ]]; then
-  . "$HOME/.vagrantrc"
-fi
-
 if [[ -s "$HOME/.linuxrc" ]]; then
   . "$HOME/.linuxrc"
+fi
+
+if [[ -s "$HOME/.secrets" ]]; then
+  . "$HOME/.secrets"
 fi
