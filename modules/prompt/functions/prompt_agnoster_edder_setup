@@ -55,7 +55,8 @@ if [[ -z "$PRIMARY_FG" ]]; then
 fi
 
 # Characters
-SEGMENT_SEPARATOR="\ue0b0"
+# SEGMENT_SEPARATOR="\ue0b0"
+SEGMENT_SEPARATOR="\uE0B4"
 PLUSMINUS="\u00b1"
 BRANCH="\ue0a0"
 DETACHED="\u27a6"
@@ -194,7 +195,7 @@ prompt_git() {
 # Dir: current working directory
 prompt_dir() {
   local trim_path=$(print -P ' %~ ' | sed -E -e "s#([^a-z]*[a-z])[^/]*/#\1/#g")
-  prompt_segment blue $PRIMARY_FG $trim_path
+  prompt_segment $PRIMARY_FG default $trim_path
 }
 
 # Status:
@@ -203,12 +204,15 @@ prompt_dir() {
 # - are there background jobs?
 prompt_status() {
   local symbols
+  local mahcolor
+
+
   symbols=()
+  # [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}$CROSS"
   [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}$CROSS"
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}$LIGHTNING"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}$GEAR"
 
-  [[ -n "$symbols" ]] && prompt_segment $PRIMARY_FG default " $symbols "
+  [[ -n "$symbols" ]] && prompt_segment 234 $PRIMARY_FG " $symbols "
 }
 
 # Display current virtual environment
